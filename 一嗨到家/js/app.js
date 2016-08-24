@@ -22,11 +22,12 @@
 		var authed = users.some(function(user) {
 			return loginInfo.account == user.account && loginInfo.password == user.password;
 		});
-		if(authed) {
+		/*if(authed) {
 			return owner.createState(loginInfo.account, callback);
 		} else {
 			return callback('用户名或密码错误');
-		}
+		}*/
+		loginajax(loginInfo);
 	};
 
 	owner.createState = function(name, callback) {
@@ -54,7 +55,7 @@
 		if(!checkEmail(regInfo.email)) {
 			return callback('邮箱地址不合法');
 		}
-		ajax(regInfo);
+		regajax(regInfo);
 
 	};
 
@@ -144,7 +145,7 @@
 		}
 	}
 
-	function ajax(regInfo) {
+	function regajax(regInfo) {
 		$.ajax('http://192.168.0.104:8081/mybatis-spring/user/register', {
 			data: {
 				account: regInfo.account,
@@ -176,4 +177,26 @@
 			}
 		});
 	}
+	
+	function loginajax(loginInfo) {
+		$.ajax('http://192.168.0.104:8081/mybatis-spring/user/login', {
+			data: {
+				account: loginInfo.account,
+				password: loginInfo.password
+			},
+			dataType: 'json', //服务器返回json格式数据
+			type: 'get', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒；
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function(data) {
+				plus.nativeUI.toast(data.message);
+				if(data.success) {
+					return owner.createState(data.openid, callback);
+				}
+			}
+		});
+	}
+	
 }(mui, window.app = {}));

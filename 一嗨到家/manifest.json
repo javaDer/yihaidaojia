@@ -14,7 +14,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "login.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "guide.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -197,7 +197,8 @@
 					"images/iconfont-tianjia.png"
 				],
 				"refer": [
-					"login.html"
+					"login.html",
+					"index.html"
 				],
 				"priority": 1
 			},
@@ -272,7 +273,8 @@
 					"images/qq.png",
 					"images/sinaweibo.png",
 					"images/weixin.png",
-					"js/common/footer.js"
+					"js/common/footer.js",
+					"js/common/md5.js"
 				],
 				"refer": [
 					"unlock.html",
@@ -302,7 +304,9 @@
 					"/css/mui.min.css",
 					"/js/mui.min.js"
 				],
-				"refer": [],
+				"refer": [
+					"index.html"
+				],
 				"priority": 0
 			}
 		},

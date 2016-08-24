@@ -11,8 +11,8 @@ document.writeln("<a class=\'mui-tab-item\'id=\'mui-icon-search\'>");
 document.writeln("<span class=\'mui-icon mui-icon-search\'></span>");
 document.writeln("<span class=\'mui-tab-label\'>搜索</span>");
 document.writeln("</a>");
-document.writeln("<a class=\'mui-tab-item\'id=\'mui-icon-chatbubble\'>");
-document.writeln("<span class=\'mui-icon mui-icon-gear\'></span>");
+document.writeln("<a class=\'mui-tab-item\'id=\'mui-icon-contact\'>");
+document.writeln("<span class=\'mui-icon mui-icon-contact\'></span>");
 document.writeln("<span class=\'mui-tab-label\'>设置</span>");
 document.writeln("</a>");
 document.writeln("</nav>");
@@ -23,20 +23,28 @@ document.writeln("</nav>");
 //			});
 //});
 document.getElementById("mui-icon-map").addEventListener('tap', function() {
-mui.openWindow({
-				url: 'index.html',
-				id: 'index'
-			});
+	mui.openWindow({
+		url: 'index.html',
+		id: 'index'
+	});
 });
 document.getElementById("mui-icon-search").addEventListener('tap', function() {
-mui.openWindow({
-				url: 'index.html',
-				id: 'index'
-			});
+	mui.openWindow({
+		url: 'index.html',
+		id: 'index'
+	});
 });
-document.getElementById("mui-icon-chatbubble").addEventListener('tap', function() {
-mui.openWindow({
-				url: 'setting.html',
-				id: 'setting'
-			});
+document.getElementById("mui-icon-contact").addEventListener('tap', function() {
+	console.log(localStorage.getItem('openid'));
+	if(localStorage.getItem('openid') != '') {
+		mui.openWindow({
+			url: 'setting.html',
+			id: 'setting'
+		});
+	} else {
+		mui.openWindow({
+			url: 'login.html',
+			id: 'login'
+		});
+	}
 })

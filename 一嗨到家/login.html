@@ -85,7 +85,7 @@
 				background-color: #ddd;
 			}
 		</style>
-
+<script type="text/javascript" src="js/common/md5.js" ></script>
 	</head>
 
 	<body>
@@ -227,7 +227,7 @@
 					loginButton.addEventListener('tap', function(event) {
 						var loginInfo = {
 							account: accountBox.value,
-							password: passwordBox.value
+							password: MD5(passwordBox.value)
 						};
 						app.login(loginInfo, function(err) {
 							if (err) {
