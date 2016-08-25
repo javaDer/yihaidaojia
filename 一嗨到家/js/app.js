@@ -12,9 +12,9 @@
 		loginInfo = loginInfo || {};
 		loginInfo.account = loginInfo.account || '';
 		loginInfo.password = loginInfo.password || '';
-		if(loginInfo.account.length < 5) {
-			return callback('账号最短为 5 个字符');
-		}
+//		if(loginInfo.account.length < 5) {
+//			return callback('账号最短为 5 个字符');
+//		}
 		if(loginInfo.password.length < 6) {
 			return callback('密码最短为 6 个字符');
 		}
@@ -146,7 +146,8 @@
 	}
 
 	function regajax(regInfo) {
-		$.ajax('http://192.168.0.104:8081/mybatis-spring/user/register', {
+		console.log(regInfo.account)
+		$.ajax('http://192.168.0.104:8080/user/register', {
 			data: {
 				account: regInfo.account,
 				password: regInfo.password,
@@ -161,25 +162,16 @@
 			success: function(data) {
 				plus.nativeUI.toast(data.message);
 				if(data.success) {
-					var users = JSON.parse(localStorage.getItem('$users') || '[]');
-					users.push(regInfo);
-					localStorage.setItem('$users', JSON.stringify(users));
-					localStorage.setItem('openid', data.openid);
-					console.log(localStorage.getItem('openid'));
-					$.openWindow({
-						url: 'login.html',
-						id: 'login',
-						show: {
-							aniShow: 'pop-in'
-						}
-					});
+					return owner.createState(data.opneid, callback);
+				}else{
+					return callback('用户名或密码错误');
 				}
 			}
 		});
 	}
 	
 	function loginajax(loginInfo) {
-		$.ajax('http://192.168.0.104:8081/mybatis-spring/user/login', {
+		$.ajax('http://192.168.0.104:8080/user/login', {
 			data: {
 				account: loginInfo.account,
 				password: loginInfo.password
@@ -193,7 +185,17 @@
 			success: function(data) {
 				plus.nativeUI.toast(data.message);
 				if(data.success) {
-					return owner.createState(data.openid, callback);
+					var users = JSON.parse(localStorage.getItem('$users') || '[]');
+					users.push(loginInfo);
+					localStorage.setItem('$users', JSON.stringify(users));
+					localStorage.setItem('openid', data.openid);
+					$.openWindow({
+						url: 'index.html',
+						id: 'index',
+						show: {
+							aniShow: 'pop-in'
+						}
+					});
 				}
 			}
 		});

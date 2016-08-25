@@ -194,7 +194,8 @@
 					"css/mui.min.css",
 					"fonts/mui.ttf",
 					"css/feedback-page.css",
-					"images/iconfont-tianjia.png"
+					"images/iconfont-tianjia.png",
+					"js/common/footer.js"
 				],
 				"refer": [
 					"login.html",
@@ -280,7 +281,8 @@
 					"unlock.html",
 					"forget_password.html",
 					"main.html",
-					"reg.html"
+					"reg.html",
+					"index.html"
 				],
 				"priority": 0
 			},

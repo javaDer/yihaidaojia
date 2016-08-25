@@ -16,12 +16,12 @@ document.writeln("<span class=\'mui-icon mui-icon-contact\'></span>");
 document.writeln("<span class=\'mui-tab-label\'>设置</span>");
 document.writeln("</a>");
 document.writeln("</nav>");
-//document.getElementById("mui-icon-home").addEventListener('tap', function() {
-//mui.openWindow({
-//				url: 'index.html',
-//				id: 'index'
-//			});
-//});
+document.getElementById("mui-icon-home").addEventListener('tap', function() {
+	mui.openWindow({
+		url: 'index.html',
+		id: 'index'
+	});
+});
 document.getElementById("mui-icon-map").addEventListener('tap', function() {
 	mui.openWindow({
 		url: 'index.html',
@@ -36,7 +36,7 @@ document.getElementById("mui-icon-search").addEventListener('tap', function() {
 });
 document.getElementById("mui-icon-contact").addEventListener('tap', function() {
 	console.log(localStorage.getItem('openid'));
-	if(localStorage.getItem('openid') != '') {
+	if(localStorage.getItem('openid') != null) {
 		mui.openWindow({
 			url: 'setting.html',
 			id: 'setting'

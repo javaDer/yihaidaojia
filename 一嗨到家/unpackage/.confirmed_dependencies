@@ -1,90 +1,95 @@
 {
-	"main.html": {
-		"resources": [
-			"js/app.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"js/common/footer.js"
-		],
-		"refer": [
-			"setting.html",
-			"index.html"
-		]
-	},
-	"setting.html": {
-		"resources": [
-			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-			"libs/easymob-webim-sdk/json2.js",
-			"libs/easymob-webim-sdk/jquery-1.11.1.js",
-			"js/mui.locker.js",
-			"js/feedback.js",
-			"css/feedback-page.css",
-			"js/feedback-page.js",
-			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-			"js/mui.view.js",
-			"js/app.js"
-		],
-		"refer": [
-			"index.html",
-			"login.html"
-		]
-	},
-	"login.html": {
-		"resources": [
-			"css/style.css",
-			"js/mui.enterfocus.js",
-			"js/common/footer.js",
-			"js/app.js",
-			"js/mui.min.js",
-			"images/sinaweibo.png",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"images/weixin.png",
-			"images/qq.png",
-			"js/common/md5.js"
-		],
-		"refer": [
-			"main.html",
-			"reg.html"
-		]
-	},
-	"index.html": {
-		"resources": [
-			"images/iconfont-tianjia.png",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"js/common/footer.js"
-		],
-		"refer": [
-			"setting.html"
-		]
-	},
-	"guide.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"/css/mui.min.css",
-			"/js/mui.min.js"
-		],
-		"refer": [
-			"index.html"
-		]
-	},
-	"reg.html": {
-		"resources": [
-			"js/common/md5.js",
-			"js/common/footer.js",
-			"js/app.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/style.css"
-		],
-		"refer": [
-			"login.html",
-			"index.html"
-		]
-	}
+  "main.html": {
+    "resources": [
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/common/footer.js"
+    ],
+    "refer": [
+      "setting.html",
+      "index.html"
+    ]
+  },
+  "setting.html": {
+    "resources": [
+      "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+      "libs/easymob-webim-sdk/json2.js",
+      "libs/easymob-webim-sdk/jquery-1.11.1.js",
+      "js/mui.locker.js",
+      "js/feedback.js",
+      "css/feedback-page.css",
+      "js/feedback-page.js",
+      "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+      "js/mui.view.js",
+      "js/app.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/common/footer.js",
+      "js/mui.min.js"
+    ],
+    "refer": [
+      "index.html",
+      "login.html"
+    ]
+  },
+  "login.html": {
+    "resources": [
+      "css/style.css",
+      "js/mui.enterfocus.js",
+      "js/common/footer.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "images/sinaweibo.png",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/weixin.png",
+      "images/qq.png",
+      "js/common/md5.js"
+    ],
+    "refer": [
+      "main.html",
+      "reg.html",
+      "index.html"
+    ]
+  },
+  "index.html": {
+    "resources": [
+      "images/iconfont-tianjia.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/common/footer.js"
+    ],
+    "refer": [
+      "setting.html"
+    ]
+  },
+  "guide.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "/css/mui.min.css",
+      "/js/mui.min.js"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "reg.html": {
+    "resources": [
+      "js/common/md5.js",
+      "js/common/footer.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css"
+    ],
+    "refer": [
+      "login.html",
+      "index.html"
+    ]
+  }
 }
