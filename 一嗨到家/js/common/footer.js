@@ -24,8 +24,8 @@ document.getElementById("mui-icon-home").addEventListener('tap', function() {
 });
 document.getElementById("mui-icon-map").addEventListener('tap', function() {
 	mui.openWindow({
-		url: 'index.html',
-		id: 'index'
+		url: 'maps.html',
+		id: 'maps'
 	});
 });
 document.getElementById("mui-icon-search").addEventListener('tap', function() {

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6whXXXn4xkA7GN8GGWilcCy7GGqVHRDY"></script>
+		<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+		<script src="js/mui.min.js"></script>
+	</head>
+
+	<body>
+		<div id="allmap">
+			地图加载中...
+		</div>
+		</body>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script>
+			  mui.plusReady(function() {
+            var localtitle = document.getElementById("local");
+            var db_lo = plus.storage.getItem("local")
+            if (db_lo == null) {
+                try {
+                    plus.nativeUI.showWaiting("首次登录，正在定位...", {
+                        padlock: false
+                    });
+                    plus.geolocation.getCurrentPosition(function(position) {
+                        var codns = position.coords; //获取地理坐标信息；
+                        var geoc = new BMap.Geocoder();
+                        var pt = new BMap.Point(codns.longitude, codns.latitude);
+                        geoc.getLocation(pt, function(rs) {
+                            var addComp = rs.addressComponents;
+                            var lo = addComp.city + "," + addComp.district + "," + addComp.street + "," + addComp.streetNumber;
+                            localtitle.innerHTML = addComp.district;
+                            plus.storage.setItem("local", addComp.district);
+                            console.log(lo);
+                            plus.nativeUI.closeWaiting();
+                        });
+                    }, function(e) {
+                        alert("获取定位位置信息失败：" + e.message);
+                        plus.nativeUI.closeWaiting();
+                    }, {
+                        provider: 'baidu'
+                    });
+                } catch (e) {
+                    alert(e.message);
+                    plus.nativeUI.closeWaiting();
+                }
+            } else {
+                localtitle.innerHTML = db_lo;
+                plus.geolocation.getCurrentPosition(function(position) {
+                    var codns = position.coords; //获取地理坐标信息；
+                    var geoc = new BMap.Geocoder();
+                    var pt = new BMap.Point(codns.longitude, codns.latitude);
+                    geoc.getLocation(pt, function(rs) {
+                        var addComp = rs.addressComponents;
+                        if (addComp.district != db_lo) {
+                            mui.confirm('发现地址变化，当前为：' + addComp.district + '\r\n是否切换？', '位置变更', ['是', '否'], function(e) {
+                                if (e.index == 0) {
+                                    plus.storage.setItem("local", addComp.district);
+                                    localtitle.innerHTML = addComp.district;
+                                }
+                            })
+                        }
+                    })
+                });
+            }
+        });
+
+			function translatePoint(position) {
+				var currentLon = position.coords.longitude;
+				console.log(currentLon);
+				var currentLat = position.coords.latitude;
+				console.log(currentLat);
+				var gpsPoint = new BMap.Point(currentLon, currentLat);
+				BMap.Convertor.translate(gpsPoint, 2, initMap); //坐标转换
+			}
+
+			function initMap(point) {
+				map = new BMap.Map("allmap"); //创建地图
+				map.addControl(new BMap.NavigationControl());
+				map.addControl(new BMap.ScaleControl());
+				map.addControl(new BMap.OverviewMapControl());
+				map.centerAndZoom(point, 11);
+				map.addOverlay(new BMap.Marker(point));
+			}
+		</script>
+
+</html>
